@@ -1,20 +1,20 @@
 //
-//  ContentView.swift
+//  AdminDashboard.swift
 //  RebuildLoFo
 //
-//  Created by Nicholas  on 17/04/25.
-// testing 
+//  Created by Nicholas  on 16/05/25.
+//
 
 import SwiftUI
 import SwiftData
 
 
-struct ContentView: View {
+struct AdminDashboard: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
 //    private var items: [Item] = [Item.dummy, Item.dummy2, Item.dummy3]
-    
+
     @State private var selectedTab: Int = 0
     @State private var searchText: String = ""
     @State private var isSearching: Bool = false
@@ -22,7 +22,7 @@ struct ContentView: View {
     @State private var selectedCategory: String? = nil
     @State private var selectedSort: SortOption = .alphabetical
     
-    @State public var isLoggedIn: Bool
+    @Binding public var isLoggedIn: Bool
     
     enum SortOption: String, CaseIterable, Identifiable {
         case alphabetical = "Alphabetical"
@@ -57,13 +57,15 @@ struct ContentView: View {
     }
 
     var body: some View {
+        
+        
         NavigationView {
             VStack(spacing: 0) {
                 VStack {
                     HStack {
-                        NavigationLink(destination: AdminLoginView(isLoggedIn: false)) {
+                        NavigationLink(destination: AddItemView()) {
                             Image(systemName: "plus")
-                                .foregroundColor(.clear)
+                                .foregroundColor(.gray)
                                 .font(.system(size: 30))
                                 .padding(.leading, 5)
                         }
@@ -118,6 +120,13 @@ struct ContentView: View {
                     
                     
                     HStack {
+                        NavigationLink(destination: ContentView(isLoggedIn: false)) {
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                                .font(.system(size: 22, weight: .bold))
+                                .foregroundColor(Color(.gray))
+                        }
+
+                        
                         HStack{
                             Image(systemName: "magnifyingglass")
                             TextField("Search items...", text: $searchText, onEditingChanged: { isEditing in
@@ -179,18 +188,21 @@ struct ContentView: View {
                     }
                 }
                 .frame(maxHeight: .infinity)
-                .sheet(item: $selectedItem){ item in
+                .sheet(item: $selectedItem) { item in
                     ItemCardDetailView(editableItem: item, isLoggedIn: $isLoggedIn)
                 }
                 
             }
         }
-        .navigationBarBackButtonHidden(true)
+//        .onAppear(){
+//            isLoggedIn = true
+//        }
     }
 }
 
 #Preview {
-    ContentView(isLoggedIn: false)
+    @Previewable @State var isLoggedIn = true
+    return AdminDashboard(isLoggedIn: $isLoggedIn)
+//    AdminDashboard()
 //        .modelContainer(for: Item.self, inMemory: true)
 }
-

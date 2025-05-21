@@ -25,8 +25,10 @@ struct RebuildLoFoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(isLoggedIn: false)
+                .preferredColorScheme(.light)
         }
         .modelContainer(sharedModelContainer)
+        
     }
 }
