@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct RebuildLoFoApp: App {
+    static let subsystem: String = "RebuildLoFo-Integrated-ScanningObject"
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,7 +27,8 @@ struct RebuildLoFoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(isLoggedIn: false)
+            RebuildLofoView(isLoggedIn: false)
+                .environment(AppDataModel.instance)
                 .preferredColorScheme(.light)
         }
         .modelContainer(sharedModelContainer)

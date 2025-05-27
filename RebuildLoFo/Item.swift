@@ -8,6 +8,9 @@
 import Foundation
 import SwiftData
 
+var items: [Item] = []
+
+
 @Model
 final class Item {
     

@@ -1,19 +1,19 @@
 //
-//  ContentView.swift
+//  RebuildLofoView.swift
 //  RebuildLoFo
 //
 //  Created by Nicholas  on 17/04/25.
-// testing 
+// testing
 
 import SwiftUI
 import SwiftData
 
 
-struct ContentView: View {
+struct RebuildLofoView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
-//    private var items: [Item] = [Item.dummy, Item.dummy2, Item.dummy3]
+    //    private var items: [Item] = [Item.dummy, Item.dummy2, Item.dummy3]
     
     @State private var selectedTab: Int = 0
     @State private var searchText: String = ""
@@ -47,15 +47,15 @@ struct ContentView: View {
         }
         
         switch selectedSort {
-            case .alphabetical:
-                result.sort {$0.itemName.localizedCompare($1.itemName) == .orderedAscending}
-            case .date:
-                result.sort { $0.dateFound > $1.dateFound }
+        case .alphabetical:
+            result.sort {$0.itemName.localizedCompare($1.itemName) == .orderedAscending}
+        case .date:
+            result.sort { $0.dateFound > $1.dateFound }
         }
         
         return result
     }
-
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -67,7 +67,7 @@ struct ContentView: View {
                                 .font(.system(size: 30))
                                 .padding(.leading, 5)
                         }
-                                                
+                        
                         
                         Spacer()
                         Picker("Item Status", selection: $selectedTab) {
@@ -83,8 +83,8 @@ struct ContentView: View {
                         Menu{
                             Section(header: Text("Sort By")) {
                                 Button(action: { selectedSort = .alphabetical }) {
-                                            Label("Alphabetical", systemImage: selectedSort == .alphabetical ? "checkmark" : "")
-                                        }
+                                    Label("Alphabetical", systemImage: selectedSort == .alphabetical ? "checkmark" : "")
+                                }
                                 Button(action: { selectedSort = .date }) {
                                     Label("Date", systemImage: selectedSort == .date ? "checkmark" : "")
                                 }
@@ -92,13 +92,13 @@ struct ContentView: View {
                             
                             Section(header: Text("Filter By")) {
                                 Button(action: { selectedCategory = nil }) {
-                                            Label("All", systemImage: selectedCategory == nil ? "checkmark" : "")
+                                    Label("All", systemImage: selectedCategory == nil ? "checkmark" : "")
                                 }
                                 ForEach(allCategories, id: \.self) { category in
                                     Button(action: {
-                                                    selectedCategory = category
-                                                }) {
-                                                    Label(category, systemImage: selectedCategory == category ? "checkmark" : "")
+                                        selectedCategory = category
+                                    }) {
+                                        Label(category, systemImage: selectedCategory == category ? "checkmark" : "")
                                     }
                                 }
                             }
@@ -164,8 +164,8 @@ struct ContentView: View {
                 }
                 .padding(.bottom)
                 .background(Color(hex: "FBD166"))
-            
-         
+                
+                
                 ScrollView{
                     LazyVStack(spacing: 0){
                         ForEach(filteredItems) { item in
@@ -190,7 +190,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(isLoggedIn: false)
-//        .modelContainer(for: Item.self, inMemory: true)
+    RebuildLofoView(isLoggedIn: false)
+    //        .modelContainer(for: Item.self, inMemory: true)
 }
 

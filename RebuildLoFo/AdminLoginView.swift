@@ -51,6 +51,7 @@ struct AdminLoginView: View {
                     Text("Invalid username or password.")
                         .foregroundColor(.red)
                         .font(.caption)
+                    
                 }
                 
                 Spacer()

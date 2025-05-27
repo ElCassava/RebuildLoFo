@@ -8,7 +8,7 @@
 import SwiftUI
 import SceneKit
 
-struct ModelView: UIViewRepresentable {
+struct ThreeDView: UIViewRepresentable {
     func makeUIView(context: Context) -> SCNView {
         let sceneView = SCNView()
         sceneView.allowsCameraControl = true
@@ -33,7 +33,7 @@ struct ModelViewerScreen: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            ModelView()
+            ThreeDView()
                 .edgesIgnoringSafeArea(.all)
 
             Button(action: {

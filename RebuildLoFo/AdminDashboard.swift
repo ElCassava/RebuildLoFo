@@ -120,7 +120,7 @@ struct AdminDashboard: View {
                     
                     
                     HStack {
-                        NavigationLink(destination: ContentView(isLoggedIn: false)) {
+                        NavigationLink(destination: RebuildLofoView(isLoggedIn: false)) {
                             Image(systemName: "rectangle.portrait.and.arrow.right")
                                 .font(.system(size: 22, weight: .bold))
                                 .foregroundColor(Color(.gray))

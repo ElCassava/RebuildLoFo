@@ -2,20 +2,21 @@
 //  AddItemView.swift
 //  RebuildLoFo
 //
-//  Created by Nicholas  on 15/05/25.
+//  Created by Nicholas  on 27/05/25.
 //
 
-import SwiftUI
 import SwiftData
 import UIKit
+import SwiftUI
+import Foundation
 
 
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     var sourceType: UIImagePickerController.SourceType = .camera
     
-    @Environment(\.dismiss) private var dismiss
-
+    @Environment(\.dismiss) public var dismiss
+    
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.sourceType = sourceType
@@ -58,11 +59,11 @@ struct AddItemView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
         
-    @State private var itemName = ""
-    @State private var itemDescription = ""
-    @State private var itemCategory = "Accessories"
-    @State private var locationFound = ""
-    @State private var dateFound = Date()
+    @State public var itemName = ""
+    @State public var itemDescription = ""
+    @State public var itemCategory = "Accessories"
+    @State public var locationFound = ""
+    @State public var dateFound = Date()
     
     @State private var selectedImage: UIImage?
     @State private var showImagePicker = false
@@ -124,12 +125,16 @@ struct AddItemView: View {
                             
                             
                         }
-                    
                 }
                 
                 Section(header: Text("Add model")) {
-                    
-                }
+                    NavigationLink(destination:
+                            ContentView()
+
+                    ) {
+                        Text("Add Model")
+                    }
+                                    }
                 
             }
             .navigationTitle("Add Item")
@@ -175,6 +180,6 @@ struct AddItemView: View {
     }
 }
 
-#Preview {
-    AddItemView()
-}
+//#Preview {
+//    AddItemView()
+//}

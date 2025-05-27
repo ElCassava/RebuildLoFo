@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct DetailRow: View {
-    
-   
-
     let icon: String
     let title: String
     let value: String

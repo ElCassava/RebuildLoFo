@@ -6,6 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E19F522C2DE5832B002177E3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E1FE98DF2DB1055B00E4E9F8 /* RebuildLoFo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RebuildLoFo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -68,6 +81,7 @@
 				E1FE98DB2DB1055B00E4E9F8 /* Sources */,
 				E1FE98DC2DB1055B00E4E9F8 /* Frameworks */,
 				E1FE98DD2DB1055B00E4E9F8 /* Resources */,
+				E19F522C2DE5832B002177E3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
